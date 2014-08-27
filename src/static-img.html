@@ -1,0 +1,74 @@
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Define your custom element -->
+<polymer-element name="static-img" attributes="width height density animated">
+    <template>
+        <canvas id="static"></canvas>
+    </template>
+    <script>
+        Polymer('static-img', {
+            // Defaults
+            width : 256,
+            height : 256,
+            density : 1,
+            animated : true,
+            created: function() {},
+            domReady: function() {},
+
+            // Fires when the "<polymer-element>" has been fully prepared
+            ready: function() {
+                this.canvas = this.$.static;
+                this.ctx = this.canvas.getContext('2d');
+
+                this.canvas.width = this.width;
+                this.canvas.height = this.height;
+
+                this.render();
+            },
+            render: function(){
+                // In case these were updated
+                this.canvas.width = this.width;
+                this.canvas.height = this.height;
+
+                var density     = this.density,
+                    width       = this.canvas.width,
+                    height      = this.canvas.height,
+                    animated    = this.animated,
+                    imageData   = this.ctx.createImageData(width, height),
+                    pixData     = imageData.data,
+                    pIdx        = 0,
+                    gray        = 0;
+
+                    for (var y = 0; y < height; y += density) {
+                        for (var x = 0; x < width; x += density) {
+                            gray = Math.floor(Math.random() * 255);
+                            for (var w = 0; w < density; w++) {
+                                for (var h = 0; h < density; h++) {
+                                    pIdx = ((x + w) + (y + h) * width) * 4;
+
+                                    pixData[pIdx] = gray;
+                                    pixData[pIdx + 1] = gray;
+                                    pixData[pIdx + 2] = gray;
+                                    pixData[pIdx + 3] = 255;
+                                }
+                            }
+
+                        }
+                    }
+
+                    this.ctx.putImageData(imageData, 0, 0);
+
+                    if(animated){
+                        this.raf = requestAnimationFrame(this.render.bind(this));
+                    }
+            },
+            attached: function() {},
+            detached: function() {
+                cancelAnimationFrame(this.raf);
+            },
+            attributeChanged: function(attr, oldVal, newVal) {}
+        });
+    </script>
+
+</polymer-element>

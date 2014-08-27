@@ -1,14 +1,11 @@
-# &lt;my-repo&gt;
+# &lt;static-img&gt;
 
-> A bare minimum custom element starter-kit using [Polymer](http://www.polymer-project.org/).
->
-> Like [Yeoman](http://yeoman.io/)? Use the [generator-element](https://www.npmjs.org/package/generator-element) instead.
->
-> Looking for a working example? Check [hello-world-polymer](https://github.com/webcomponents/hello-world-polymer).
+> Custom element using [Polymer](http://www.polymer-project.org/) that creates images with random static.
+
 
 ## Demo
 
-[Check it live!](http://my-user.github.io/my-repo)
+[Check it live!](http://loktar00.github.io/static-img)
 
 ## Install
 
@@ -18,7 +15,7 @@ Install the component using [Bower](http://bower.io/):
 $ bower install my-repo --save
 ```
 
-Or [download as ZIP](https://github.com/my-user/my-repo/archive/master.zip).
+Or [download as ZIP](https://github.com/loktar00/static-img/archive/master.zip).
 
 ## Usage
 
@@ -31,32 +28,24 @@ Or [download as ZIP](https://github.com/my-user/my-repo/archive/master.zip).
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="bower_components/my-repo/dist/my-element.html">
+    <link rel="import" href="bower_components/static-img/dist/static-img.html">
     ```
 
 3. Start using it!
 
     ```html
-    <my-element></my-element>
+    <static-img></static-img>
     ```
 
 ## Options
 
 Attribute     | Options     | Default      | Description
 ---           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
+`width`         | *int*    | `256`        | Width of the element
+`height`         | *int*    | `256`        | Height of the element
+`density`         | *int*    | `1`        | Size of the static "pixels"
+`animated`         | *bool*    | `true`        | Whether the static is animated or not.
 
-## Methods
-
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
-
-## Events
-
-Event         | Description
----           | ---
-`onsomething` | Triggers when something happens.
 
 ## Development
 
@@ -102,7 +91,7 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 
 ## History
 
-For detailed changelog, check [Releases](https://github.com/my-user/my-repo/releases).
+For detailed changelog, check [Releases](https://github.com/loktar00/static-img/releases).
 
 ## License
 
